@@ -1,0 +1,5 @@
+.vscode
+Credentials.h
+private-key.h
+dist
+iot-config.h

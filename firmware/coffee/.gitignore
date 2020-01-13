@@ -1,0 +1,6 @@
+node_modules/
+dist/
+*.bin
+private-key.h
+.vscode
+iot-config.h

@@ -1,0 +1,36 @@
+/******************************************************************************
+ * Copyright 2018 Google
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *****************************************************************************/
+// This file contains your configuration used to connect to Cloud IoT Core
+
+#include "private-key.h"
+
+// Cloud iot details.
+const char* project_id = "gcp_project";
+const char* location = "gcp-region";
+const char* registry_id = "iot-core-reigstry-id";
+const char* device_id = "iot-core-device-id";
+
+// Configuration for NTP
+const char* ntp_primary = "pool.ntp.org";
+const char* ntp_secondary = "time.nist.gov";
+    
+// Time (seconds) to expire token += 20 minutes for drift
+const int jwt_exp_secs = 3600; // Maximum 24H (3600*24)
+// In case we ever need extra topics
+const int ex_num_topics = 0;
+const char* ex_topics[ex_num_topics];
+//const int ex_num_topics = 0;
+//const char* ex_topics[ex_num_topics] = {
+//};
