@@ -3,7 +3,7 @@
   "version": "1.1.9",
   "description": "",
   "devDependencies": {
-    "standard-version": "^4.2.0"
+    "standard-version": "^8.0.1"
   },
   "scripts": {
     "pre-release": "standard-version --skip.commit=true --skip.tag=true",
