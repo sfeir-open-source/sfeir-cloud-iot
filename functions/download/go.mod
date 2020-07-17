@@ -1,6 +1,6 @@
-module iotfirmware
+module github.com/sfeir-open-source/sfeir-cloud-iot/functions/download
 
-go 1.11
+go 1.13
 
 require (
 	cloud.google.com/go v0.39.0

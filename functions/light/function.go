@@ -1,4 +1,4 @@
-package iotwords
+package light
 
 import (
 	"context"

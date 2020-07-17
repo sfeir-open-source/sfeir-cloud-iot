@@ -1,4 +1,4 @@
-package iotcoffee
+package coffee
 
 import (
 	"context"

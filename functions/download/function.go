@@ -1,4 +1,4 @@
-package iotfirmware
+package download
 
 import (
 	"cloud.google.com/go/storage"

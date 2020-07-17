@@ -5,7 +5,7 @@
       --memory 128MB \
       --env-vars-file envar.yaml \
       --region europe-west1 \
-      --runtime go111 \
+      --runtime go113 \
       --allow-unauthenticated \
       --trigger-http
 
