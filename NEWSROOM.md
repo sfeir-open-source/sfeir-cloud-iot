@@ -31,7 +31,7 @@ Le backend de notre projet s'articulait autour des composants et contraintes sui
  
  Le schéma suivant présente l'assemblage de toutes ces briques logicielles :
  
-![schéma de design](img/stranger_sfeir_design.png)
+![schéma de design](docs/img/stranger_sfeir_design.png)
 
 ### Fonctionnement
 
@@ -76,11 +76,11 @@ Pour afficher une lettre sur la guirlande, les actions suivantes doivent être r
 
 Concernant la réalisation à proprement parler, voici les étapes réalisées :
 
-1. Dessiner la guirlande au crayon pour définir la position régulière des ampoules sur le papier peint ![peinture](img/peinture.jpg)
-2. Découpe des fils à la bonne taille pour souder les LED de la guirlande ![cables](img/cables.jpg)
+1. Dessiner la guirlande au crayon pour définir la position régulière des ampoules sur le papier peint ![peinture](docs/img/peinture.jpg)
+2. Découpe des fils à la bonne taille pour souder les LED de la guirlande ![cables](docs/img/cables.jpg)
 3. Découper unitairement les LED de la guirlande en gardant leur bon ordre
 4. Souder les LED avec les fils, penser à étamer les fils avant pour plus de facilité
-5. Peindre la guirlande sur le papier peint 🖌 ![coloriage](img/peinture2.jpg)
+5. Peindre la guirlande sur le papier peint 🖌 ![coloriage](docs/img/peinture2.jpg)
 5. Perforer le papier peint pour faire apparaitre les LED
 6. Fixer les LED au dos du papier peint
 7. Fixer le papier peint, la guirlande et l'Arduino sur un support en papier plume pour un rendu solide
@@ -102,4 +102,4 @@ Concernant la réalisation à proprement parler, voici les étapes réalisées :
  * Merci à [Aurélien](https://twitter.com/sn0rks) pour la relecture 🤓
 
 ## Résultat final
-![Résultat final](img/final.jpg)
+![Résultat final](docs/img/final.jpg)
