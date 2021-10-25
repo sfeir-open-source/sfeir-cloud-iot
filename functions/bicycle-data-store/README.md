@@ -16,9 +16,3 @@ In a separate `envar.yaml` file :
     PROJECT_REGION: "europe-west1"
     PROJECT_REGISTRY_ID: "myregistryid"
     PROJECT_DEVICE_ID: "mydeviceid"`
-    
-# Test function
-
-Parameter `-L` to follow the redirection.
-
-    curl -L https://project-url/coffee
