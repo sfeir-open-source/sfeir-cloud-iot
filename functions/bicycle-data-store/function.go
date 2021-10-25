@@ -19,9 +19,9 @@ type PubSubMessage struct {
 }
 
 type Metric struct {
-	Rpm        int    `json:"rpm"`
-	Revolution int    `json:"revolution"`
-	Time       string `json:"time"`
+	Rpm         int    `json:"rpm"`
+	Revolutions int    `json:"revolutions"`
+	Time        string `json:"time"`
 }
 
 // HelloPubSub consumes a Pub/Sub message.
