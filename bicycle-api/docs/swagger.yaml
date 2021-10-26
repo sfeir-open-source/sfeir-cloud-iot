@@ -1,0 +1,51 @@
+basePath: /v1
+definitions:
+  models.BicycleData:
+    properties:
+      revolutions:
+        example: 10
+        type: integer
+      rpm:
+        example: 200
+        type: integer
+      time:
+        example: "2021-10-26T22:17:36Z"
+        type: string
+    type: object
+  models.ErrorResponse:
+    properties:
+      error_code:
+        example: UnprocessableEntity
+        type: string
+      message:
+        example: Malformed body
+        type: string
+      status_code:
+        example: 422
+        type: integer
+    type: object
+info:
+  contact: {}
+  title: bicycle API
+  version: 0.1.0
+paths:
+  /bicycle:
+    get:
+      description: Get users array objects data from database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.BicycleData'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Get users from database
+      tags:
+      - BicyleData
+swagger: "2.0"
