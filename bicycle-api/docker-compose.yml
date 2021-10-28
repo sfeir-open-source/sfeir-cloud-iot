@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  api:
+    container_name: "biclycle-api"
+    image: golang:latest
+    working_dir: /api
+    env_file:
+      - .env
+    volumes:
+      - ".:/api"
+    ports:
+      - 8090:8000
+    entrypoint: ["./entrypoint.sh", "reflex", "-c", "reflex.conf"]

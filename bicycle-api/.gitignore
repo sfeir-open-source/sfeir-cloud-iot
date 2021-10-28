@@ -1,0 +1,9 @@
+# Docker
+docker-compose.override.yml
+.env
+
+cred.json
+
+# Build
+bicycle-api
+/*.exe

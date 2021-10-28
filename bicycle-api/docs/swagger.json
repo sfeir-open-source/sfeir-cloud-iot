@@ -1,0 +1,76 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "bicycle API",
+        "contact": {},
+        "version": "0.1.0"
+    },
+    "basePath": "/v1",
+    "paths": {
+        "/bicycle": {
+            "get": {
+                "description": "Get users array objects data from database",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "BicyleData"
+                ],
+                "summary": "Get users from database",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.BicycleData"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/models.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "models.BicycleData": {
+            "type": "object",
+            "properties": {
+                "revolutions": {
+                    "type": "integer",
+                    "example": 10
+                },
+                "rpm": {
+                    "type": "integer",
+                    "example": 200
+                },
+                "time": {
+                    "type": "string",
+                    "example": "2021-10-26T22:17:36Z"
+                }
+            }
+        },
+        "models.ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "error_code": {
+                    "type": "string",
+                    "example": "UnprocessableEntity"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Malformed body"
+                },
+                "status_code": {
+                    "type": "integer",
+                    "example": 422
+                }
+            }
+        }
+    }
+}
