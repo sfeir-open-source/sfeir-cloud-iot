@@ -12,4 +12,12 @@ func createBicycleRouter(router *mux.Router) {
 	bicycleRouter.
 		HandleFunc("", handlers.GetAllBicyleData).
 		Methods("GET")
+
+	bicycleRouter.
+		HandleFunc("/speed", handlers.GetBicycleCurrentSpeed).
+		Methods("GET")
+
+	bicycleRouter.
+		HandleFunc("/config", handlers.GetConfig).
+		Methods("GET")
 }

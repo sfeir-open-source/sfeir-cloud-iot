@@ -20,7 +20,7 @@ type UnprocessableEntity int
 type Unauthorized int
 
 // GetError return BadRequest wrapped error
-func (BadRequest *BadRequest) GetError(message string) *ErrorResponse {
+func (badRequest *BadRequest) GetError(message string) *ErrorResponse {
 	return &ErrorResponse{
 		StatusCode: 400,
 		ErrorCode:  "BadRequest",
@@ -38,7 +38,7 @@ func (unauthorized *Unauthorized) GetError(message string) *ErrorResponse {
 }
 
 // GetError return NotFound wrapped error
-func (NotFound *NotFound) GetError(message string) *ErrorResponse {
+func (notFound *NotFound) GetError(message string) *ErrorResponse {
 	return &ErrorResponse{
 		StatusCode: 404,
 		ErrorCode:  "NotFound",
@@ -47,7 +47,7 @@ func (NotFound *NotFound) GetError(message string) *ErrorResponse {
 }
 
 // GetError return UnprocessableEntity error
-func (UnprocessableEntity *UnprocessableEntity) GetError(message string) *ErrorResponse {
+func (unprocessableEntity *UnprocessableEntity) GetError(message string) *ErrorResponse {
 	return &ErrorResponse{
 		StatusCode: 422,
 		ErrorCode:  "UnprocessableEntity",
