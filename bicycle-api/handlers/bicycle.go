@@ -2,9 +2,11 @@ package handlers
 
 import (
 	"encoding/json"
-	"github.com/sfeir-cloud-iot/bicycle-api/models"
 	"math"
 	"net/http"
+	"time"
+
+	"github.com/sfeir-cloud-iot/bicycle-api/models"
 
 	"github.com/sfeir-cloud-iot/bicycle-api/db"
 )
@@ -52,4 +54,40 @@ func GetBicycleCurrentSpeed(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(models.SpeedDTO{Speed: currentSpeed})
+}
+
+func GetDistances(w http.ResponseWriter, r *http.Request) {
+	start := r.URL.Query().Get("start")
+	end := r.URL.Query().Get("end")
+	bicycleData, err := db.GetBicycleDataBetweenDate(start, end)
+	if SendDbErrorIfPresent("bicycle", w, err) {
+		return
+	}
+
+	config, err := db.GetCurrentConfig()
+	if SendDbErrorIfPresent("config", w, err) {
+		return
+	}
+
+	radiusInMeters := config.RadiusInCm / 100
+	perimeterWheel := 2 * math.Pi * radiusInMeters
+
+	var start_date = time.Now()
+	var end_date = start_date
+	distanceInMeter := 0.0
+	for _, data := range bicycleData {
+		distanceInMeter += perimeterWheel * float64(data.Revolutions)
+		if data.Time.Before(start_date) {
+			start_date = data.Time
+		}
+		if data.Time.After(end_date) {
+			end_date = data.Time
+		}
+	}
+	distanceTotal := distanceInMeter / 1000
+	distance := models.DistanceDTO{Distance: float64(distanceTotal),
+		Start: start_date, End: end_date}
+
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(distance)
 }
