@@ -73,7 +73,7 @@ func GetDistances(w http.ResponseWriter, r *http.Request) {
 	perimeterWheel := 2 * math.Pi * radiusInMeters
 
 	var start_date = time.Now()
-	var end_date time.Time
+	var end_date = start_date
 	distanceInMeter := 0.0
 	for _, data := range bicycleData {
 		distanceInMeter += perimeterWheel * float64(data.Revolutions)
