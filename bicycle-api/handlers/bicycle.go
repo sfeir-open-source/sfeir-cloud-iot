@@ -74,9 +74,9 @@ func GetDistances(w http.ResponseWriter, r *http.Request) {
 
 	var start_date = time.Now()
 	var end_date time.Time
-	distanceTotal := 0.0
+	distanceInMeter := 0.0
 	for _, data := range bicycleData {
-		distanceTotal += perimeterWheel * float64(data.Revolutions)
+		distanceInMeter += perimeterWheel * float64(data.Revolutions)
 		if data.Time.Before(start_date) {
 			start_date = data.Time
 		}
@@ -84,7 +84,7 @@ func GetDistances(w http.ResponseWriter, r *http.Request) {
 			end_date = data.Time
 		}
 	}
-
+	distanceTotal := distanceInMeter / 1000
 	distance := models.DistanceDTO{Distance: float64(distanceTotal),
 		Start: start_date, End: end_date}
 
