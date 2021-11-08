@@ -1,0 +1,29 @@
+@import 'src/components/colors';
+
+.footer {
+  color: $lavender;
+  background-color: rgba($yellow-dark, 0.5);
+  text-align: center;
+  padding: 1em;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  a {
+    color: $blue;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.footer-period {
+  display: none;
+}
+
+.footer-text {
+  font-size: 0.8em;
+  font-weight: 600;
+}
