@@ -18,6 +18,10 @@ func createBicycleRouter(router *mux.Router) {
 		Methods("GET")
 
 	bicycleRouter.
+		HandleFunc("/distances", handlers.GetDistances).
+		Methods("GET")
+
+	bicycleRouter.
 		HandleFunc("/config", handlers.GetConfig).
 		Methods("GET")
 }

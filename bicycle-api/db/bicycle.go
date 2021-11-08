@@ -39,3 +39,17 @@ func GetLastBicycleData() (*models.BicycleData, error) {
 
 	return &bicycleLastData, nil
 }
+
+func GetBicycleDataBetweenDate(start string, end string) (map[string]models.BicycleData, error) {
+	ctx := context.Background()
+	var data map[string]models.BicycleData
+
+	ref := Db.NewRef("bicycle_data")
+
+	if err := ref.OrderByKey().StartAt(start).EndAt(end).Get(ctx, &data); err != nil {
+		log.Println("Error reading from database:", err)
+		return nil, err
+	}
+
+	return data, nil
+}
