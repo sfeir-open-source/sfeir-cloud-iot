@@ -10,9 +10,9 @@ import (
 // GetConfig return the current config stored in Firebase
 // @Summary Gets the current config from database
 // @Description Gets the current config from database
-// @Tags BicyleConfig
+// @Tags ConfigData
 // @Produce json
-// @Success 200 {object} models.BicyleConfig BicycleConfig
+// @Success 200 {object} models.ConfigData ConfigData
 // @Failure 400 {object} models.ErrorResponse
 // @Router /config [get]
 func GetConfig(w http.ResponseWriter, r *http.Request) {

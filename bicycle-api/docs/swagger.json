@@ -9,14 +9,14 @@
     "paths": {
         "/bicycle": {
             "get": {
-                "description": "Get users array objects data from database",
+                "description": "Gets all the bicycle data from database",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "BicyleData"
                 ],
-                "summary": "Get users from database",
+                "summary": "Gets all bicycle data from database",
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -25,6 +25,55 @@
                             "items": {
                                 "$ref": "#/definitions/models.BicycleData"
                             }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/models.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/bicycle/v1/speed": {
+            "get": {
+                "description": "Computes the current bicycle speed from the latest data in firebase",
+                "tags": [
+                    "BicyleSpeed"
+                ],
+                "summary": "Computes the current bicycle speed from database",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "int"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/models.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/config": {
+            "get": {
+                "description": "Gets the current config from database",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ConfigData"
+                ],
+                "summary": "Gets the current config from database",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.ConfigData"
                         }
                     },
                     "400": {
@@ -52,6 +101,19 @@
                 "time": {
                     "type": "string",
                     "example": "2021-10-26T22:17:36Z"
+                }
+            }
+        },
+        "models.ConfigData": {
+            "type": "object",
+            "properties": {
+                "radius_in_cm": {
+                    "type": "number",
+                    "example": 30
+                },
+                "target_km": {
+                    "type": "integer",
+                    "example": 150
                 }
             }
         },

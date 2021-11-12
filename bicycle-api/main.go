@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "github.com/sfeir-cloud-iot/bicycle-api/docs"
 	"github.com/sfeir-cloud-iot/bicycle-api/router"
 
 	_ "github.com/joho/godotenv/autoload"

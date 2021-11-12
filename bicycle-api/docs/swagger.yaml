@@ -12,6 +12,15 @@ definitions:
         example: "2021-10-26T22:17:36Z"
         type: string
     type: object
+  models.ConfigData:
+    properties:
+      radius_in_cm:
+        example: 30
+        type: number
+      target_km:
+        example: 150
+        type: integer
+    type: object
   models.ErrorResponse:
     properties:
       error_code:
@@ -31,7 +40,7 @@ info:
 paths:
   /bicycle:
     get:
-      description: Get users array objects data from database
+      description: Gets all the bicycle data from database
       produces:
       - application/json
       responses:
@@ -45,7 +54,39 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/models.ErrorResponse'
-      summary: Get users from database
+      summary: Gets all bicycle data from database
       tags:
       - BicyleData
+  /bicycle/v1/speed:
+    get:
+      description: Computes the current bicycle speed from the latest data in firebase
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: int
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Computes the current bicycle speed from database
+      tags:
+      - BicyleSpeed
+  /config:
+    get:
+      description: Gets the current config from database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ConfigData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Gets the current config from database
+      tags:
+      - ConfigData
 swagger: "2.0"
