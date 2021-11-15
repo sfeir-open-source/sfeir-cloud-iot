@@ -1,5 +1,9 @@
-export const WheelFront = () => (
-  <g className="wheel-front">
+interface WheelFrontProps {
+  animationDuration: number;
+}
+
+export const WheelFront: React.FC<WheelFrontProps> = (props) => (
+  <g className="wheel-front" style={{animationDuration: `${props.animationDuration}s`}}>
     <g className="wheel-front-spokes stroke--blue">
       <line x1="457.99" y1="229.3" x2="416.21" y2="161.65"/>
       <line x1="477.49" y1="222.18" x2="465.84" y2="143.52"/>

@@ -25,34 +25,42 @@ import { FenderRear } from 'components/bicycle/Fender/FenderRear';
 import { Stem } from 'components/bicycle/Stem';
 import { Stays } from 'components/bicycle/Stays';
 
-export const Bicycle = () => {
+interface BicycleProps {
+  rpm: number;
+}
+
+export const Bicycle: React.FC<BicycleProps> = (props) => {
+  const wheelAnimationDuration = 60 / props.rpm;
+  const pedalAnimationDuration = wheelAnimationDuration * 2.6;
+  const chainAnimationDuration = wheelAnimationDuration / 4;
+
   return (
     <svg className="bicycle" viewBox="0 0 588.35 360.02">
-      <PedalLeft/>
-      <CrankArmLeft/>
+      <PedalLeft animationDuration={pedalAnimationDuration}/>
+      <CrankArmLeft animationDuration={pedalAnimationDuration}/>
       <FenderFront/>
       <FenderRear/>
-      <WheelFront/>
+      <WheelFront animationDuration={wheelAnimationDuration}/>
       <SeatPost/>
-      <WheelRear/>
+      <WheelRear animationDuration={wheelAnimationDuration}/>
       <Cogset/>
       <Stem/>
       <Brakes/>
       <Frame/>
       <Seat/>
       <SeatPostTop/>
-      <ChainTop/>
+      <ChainTop animationDuration={chainAnimationDuration}/>
       <Stays/>
-      <CogsetTop/>
+      <CogsetTop animationDuration={pedalAnimationDuration}/>
       <FenderRearPost/>
       <FrameSticker/>
       <Welding/>
       <Caps/>
       <HandleBars/>
-      <ChainBottom/>
-      <ChainRings/>
-      <CrankArmRight/>
-      <PedalRight/>
+      <ChainBottom animationDuration={chainAnimationDuration}/>
+      <ChainRings animationDuration={pedalAnimationDuration}/>
+      <CrankArmRight animationDuration={pedalAnimationDuration}/>
+      <PedalRight animationDuration={pedalAnimationDuration}/>
     </svg>
   )
 }

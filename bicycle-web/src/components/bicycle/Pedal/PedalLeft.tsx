@@ -1,6 +1,10 @@
-export const PedalLeft = () => (
-  <g className="pedal-left">
-    <g className="pedal-left-inner">
+interface PedalLeftProps {
+  animationDuration: number;
+}
+
+export const PedalLeft: React.FC<PedalLeftProps> = (props) => (
+  <g className="pedal-left" style={{animationDuration: `${props.animationDuration}s`}}>
+    <g className="pedal-left-inner" style={{animationDuration: `${props.animationDuration}s`}}>
       <rect className="stroke--round stroke--blue stroke--3px fill--yellow-light" x="195.03" y="221.14"
             width="44.03" height="10.5" transform="translate(-1.33 0.87) rotate(-0.36)"/>
       <rect className="stroke--round stroke--3px fill--yellow-dark stroke--blue" x="202.67" y="221.14"

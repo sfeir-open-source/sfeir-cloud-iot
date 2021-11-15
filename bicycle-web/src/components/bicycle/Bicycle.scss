@@ -118,12 +118,12 @@
 .pedal-right,
 .pedal-left-inner,
 .pedal-right-inner {
-  animation-duration: 0.8s;
+  //animation-duration: 0.8s !important;
 }
 
 .wheel-front,
 .wheel-rear {
-  animation-duration: 0.3s;
+  //animation-duration: 0.3s !important;
 }
 
 .chain-move {
@@ -221,17 +221,5 @@ body {
 @media (min-width: 420px) {
   .footer-br {
     display: none;
-  }
-}
-
-@media (max-width: 520px) {
-  .bicycle {
-    transform: translate3d(-50%, -50%, 0) scale(.775);
-  }
-}
-
-@media (max-width: 420px) {
-  .bicycle {
-    transform: translate3d(-50%, -50%, 0) scale(.5);
   }
 }
