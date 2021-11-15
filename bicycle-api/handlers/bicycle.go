@@ -37,7 +37,7 @@ func GetAllBicyleData(w http.ResponseWriter, r *http.Request) {
 // @Tags BicyleSpeed
 // @Success 200 {int} current speed of the bicycle
 // @Failure 400 {object} models.ErrorResponse
-// @Router /bicycle/v1/speed [get]
+// @Router /bicycle/speed [get]
 func GetBicycleCurrentSpeed(w http.ResponseWriter, r *http.Request) {
 	lastBicycleData, err := db.GetLastBicycleData()
 	if SendDbErrorIfPresent("bicycle", w, err) {
@@ -46,6 +46,15 @@ func GetBicycleCurrentSpeed(w http.ResponseWriter, r *http.Request) {
 
 	config, err := db.GetCurrentConfig()
 	if SendDbErrorIfPresent("config", w, err) {
+		return
+	}
+
+	currentDatetime := time.Now()
+	limitDateTime := lastBicycleData.Time.Add(time.Second * 10)
+
+	if (currentDatetime.After(limitDateTime)) {
+		w.WriteHeader(http.StatusOK)
+		json.NewEncoder(w).Encode(models.SpeedDTO{Speed: 0})
 		return
 	}
 

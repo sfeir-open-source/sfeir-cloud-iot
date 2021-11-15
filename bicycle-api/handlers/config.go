@@ -14,7 +14,7 @@ import (
 // @Produce json
 // @Success 200 {object} models.ConfigData ConfigData
 // @Failure 400 {object} models.ErrorResponse
-// @Router /config [get]
+// @Router /bicycle/config [get]
 func GetConfig(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 

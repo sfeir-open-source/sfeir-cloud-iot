@@ -57,22 +57,7 @@ paths:
       summary: Gets all bicycle data from database
       tags:
       - BicyleData
-  /bicycle/v1/speed:
-    get:
-      description: Computes the current bicycle speed from the latest data in firebase
-      responses:
-        "200":
-          description: OK
-          schema:
-            type: int
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/models.ErrorResponse'
-      summary: Computes the current bicycle speed from database
-      tags:
-      - BicyleSpeed
-  /config:
+  /bicycle/config:
     get:
       description: Gets the current config from database
       produces:
@@ -89,4 +74,19 @@ paths:
       summary: Gets the current config from database
       tags:
       - ConfigData
+  /bicycle/speed:
+    get:
+      description: Computes the current bicycle speed from the latest data in firebase
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: int
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+      summary: Computes the current bicycle speed from database
+      tags:
+      - BicyleSpeed
 swagger: "2.0"
