@@ -52,8 +52,11 @@ func newFirebaseApp(ctx context.Context) *db.Client {
 }
 
 func addDocument(ctx context.Context, dbClient db.Client, message []byte) {
-	metric := &Metric{}
-	json.Unmarshal(message, &metric)
+	metric := new(Metric)
+	err := json.Unmarshal(message, metric)
+	if err != nil {
+		log.Fatalln("Error unmarshalling message", err)
+	}
 
     if metric.Time != "" {
         // retrieve a byte slice from bytes.Buffer
@@ -61,5 +64,7 @@ func addDocument(ctx context.Context, dbClient db.Client, message []byte) {
         if err != nil {
             log.Fatalln("Error set message", err)
         }
-    }
+    } else {
+		log.Println("Missing data time")
+	}
 }
