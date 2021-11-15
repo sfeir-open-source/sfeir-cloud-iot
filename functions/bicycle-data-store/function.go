@@ -55,10 +55,11 @@ func addDocument(ctx context.Context, dbClient db.Client, message []byte) {
 	metric := &Metric{}
 	json.Unmarshal(message, &metric)
 
-	// retrieve a byte slice from bytes.Buffer
-	err := dbClient.NewRef(fmt.Sprintf("bicycle_data/%s", metric.Time)).Set(ctx, metric)
-	if err != nil {
-		log.Fatalln("Error set message", err)
-	}
-
+    if metric.Time != "" {
+        // retrieve a byte slice from bytes.Buffer
+        err := dbClient.NewRef(fmt.Sprintf("bicycle_data/%s", metric.Time)).Set(ctx, metric)
+        if err != nil {
+            log.Fatalln("Error set message", err)
+        }
+    }
 }
