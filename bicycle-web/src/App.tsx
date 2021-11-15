@@ -8,13 +8,20 @@ import { api } from 'http/http';
 import { AxiosResponse } from 'axios';
 import { round, sortBy } from 'lodash';
 
+const today = new Date();
+const tomorrow = new Date();
+tomorrow.setDate(today.getDate() + 1);
+
+const year = today.getFullYear();
+const month = today.getMonth() + 1;
+
 function App() {
   const { data: speed } = useQuery('speed', () => api.get('/speed').then((response: AxiosResponse<{ speed: number }>) => response.data.speed), { refetchInterval: 5100 });
 
   const { data: distance } = useQuery('distance', () => api.get('/distances', {
     params: {
-      start: '2021-11-15',
-      end: '2021-11-16'
+      start: `${year}-${month}-${today.getDate()}`,
+      end: `${year}-${month}-${tomorrow.getDate()}`
     }
   }).then((response: AxiosResponse<{ distance: number }>) => response.data.distance), { refetchInterval: 5100 });
 
@@ -30,7 +37,7 @@ function App() {
         <span className="distance">Distance: {round(distance || 0, 2)}km</span>
       </div>
       <div className="animation">
-        <Road animationDuration={1}/>
+        <Road animationDuration={3 / (speed || 1)}/>
         <Bicycle rpm={round(rpm || 0)}/>
       </div>
       <Footer/>
