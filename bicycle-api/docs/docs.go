@@ -52,30 +52,7 @@ var doc = `{
                 }
             }
         },
-        "/bicycle/v1/speed": {
-            "get": {
-                "description": "Computes the current bicycle speed from the latest data in firebase",
-                "tags": [
-                    "BicyleSpeed"
-                ],
-                "summary": "Computes the current bicycle speed from database",
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "int"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/models.ErrorResponse"
-                        }
-                    }
-                }
-            }
-        },
-        "/config": {
+        "/bicycle/config": {
             "get": {
                 "description": "Gets the current config from database",
                 "produces": [
@@ -90,6 +67,29 @@ var doc = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/models.ConfigData"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/models.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/bicycle/speed": {
+            "get": {
+                "description": "Computes the current bicycle speed from the latest data in firebase",
+                "tags": [
+                    "BicyleSpeed"
+                ],
+                "summary": "Computes the current bicycle speed from database",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "int"
                         }
                     },
                     "400": {
