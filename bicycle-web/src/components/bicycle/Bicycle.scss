@@ -65,7 +65,7 @@
 // ==================================================
 .bicycle {
   width: 500px;
-  height: 306px;
+  height: auto;
   position: absolute;
   left: 50%;
   top: 0;
@@ -218,8 +218,26 @@ body {
   background-color: #fed879;
 }
 
-@media (min-width: 420px) {
-  .footer-br {
-    display: none;
+@media screen and (max-width: 900px) {
+  .bicycle {
+    width: 450px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .bicycle {
+    width: 320px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .bicycle {
+    width: 280px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .bicycle {
+    width: 250px;
   }
 }

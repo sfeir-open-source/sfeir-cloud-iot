@@ -37,8 +37,10 @@ function App() {
         <span className="distance">Distance: {round(distance || 0, 2)}km</span>
       </div>
       <div className="animation">
-        <Road animationDuration={3 / (speed || 1)}/>
-        <Bicycle rpm={round(rpm || 0)}/>
+        <div>
+          <Road animationDuration={speed ? 3 / (speed || 1) : 0}/>
+          <Bicycle rpm={speed ? round(rpm || 0) : 0}/>
+        </div>
       </div>
       <Footer/>
     </div>

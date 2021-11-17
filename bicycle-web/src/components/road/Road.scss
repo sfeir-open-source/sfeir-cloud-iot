@@ -42,3 +42,43 @@
     background-position: -120px;
   }
 }
+
+@media screen and (max-width: 900px) {
+  .road-animation {
+    width: 650px;
+    top: 160px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .road-animation {
+    width: 450px;
+    top: 80px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .road-animation {
+    width: 350px;
+    height: 130px;
+    top: 90px;
+
+    .road-lines {
+      height: 15px;
+      background-size: 100px;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .road-animation {
+    width: 280px;
+    height: 85px;
+    top: 100px;
+
+    .road-lines {
+      height: 10px;
+      background-size: 50px;
+    }
+  }
+}

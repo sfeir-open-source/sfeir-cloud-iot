@@ -6,7 +6,7 @@ export const Footer = () => (
           <a href="https://dribbble.com/shots/2745803-Bike-season" target="_blank"
              rel="noreferrer">Bicycle illustration</a> by <a href="https://twitter.com/megdraws" target="_blank"
                                                              rel="noreferrer">Meg Robichaud</a>
-        </span><br className="footer-br"/>
+        </span>
     &nbsp;
     <span className="footer-text">
           Bicycle animation by <a href="https://codepen.io/jonsuh" target="_blank" rel="noreferrer">Jonathan Suh</a>

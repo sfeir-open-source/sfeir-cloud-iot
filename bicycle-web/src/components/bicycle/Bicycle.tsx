@@ -30,7 +30,7 @@ interface BicycleProps {
 }
 
 export const Bicycle: React.FC<BicycleProps> = (props) => {
-  const wheelAnimationDuration = 60 / props.rpm;
+  const wheelAnimationDuration = props.rpm ? 60 / props.rpm : 0;
   const pedalAnimationDuration = wheelAnimationDuration * 2.6;
   const chainAnimationDuration = wheelAnimationDuration / 4;
 
