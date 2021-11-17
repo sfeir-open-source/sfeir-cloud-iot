@@ -31,19 +31,23 @@ function App() {
   }), { refetchInterval: 5100 });
 
   return (
-    <div className="app">
-      <div className="info">
-        <span className="speed">Speed: {round(speed || 0, 2)}km/h</span>
-        <span className="distance">Distance: {round(distance || 0, 2)}km</span>
-      </div>
-      <div className="animation">
-        <div>
+    <>
+      <div className="background"/>
+      <div className="app">
+        <div className="info">
+          <span className="speed">Vitesse: {round(speed || 0, 2)}km/h</span>
+          <span className="distance">Distance: {round(distance || 0, 2)}km</span>
+        </div>
+        <div className="animation">
           <Road animationDuration={speed ? 3 / (speed || 1) : 0}/>
           <Bicycle rpm={speed ? round(rpm || 0) : 0}/>
         </div>
+        <div className="info">
+          <span className="objective">Objectif: 100km</span>
+        </div>
+        <Footer/>
       </div>
-      <Footer/>
-    </div>
+    </>
   );
 }
 

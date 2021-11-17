@@ -1,8 +1,7 @@
 .app {
-  display: flex;
-  flex-direction: column;
   height: 100%;
   width: 100%;
+  position: relative;
 
   .info {
     display: flex;
@@ -11,6 +10,7 @@
     margin-top: 1em;
     font-weight: bold;
     text-transform: uppercase;
+    z-index: 1;
 
     .speed {
       margin-right: 1em;
@@ -18,12 +18,25 @@
   }
 
   .animation {
+    z-index: 1;
     position: relative;
     flex: 1 1 auto;
     display: flex;
     justify-content: center;
     margin-top: 4em;
+    min-height: 400px;
   }
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  background: url("./banner.jpg") no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: .5;
 }
 
 @media screen and (max-width: 900px) {
@@ -31,12 +44,24 @@
     .info {
       flex-direction: column;
       align-items: center;
-      margin-top: 0;
+      margin-top: 1em;
 
       .speed {
         margin-right: 0;
         margin-bottom: 1em;
       }
+    }
+
+    .animation {
+      min-height: 350px;
+    }
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .app {
+    .animation {
+      min-height: 270px;
     }
   }
 }
@@ -49,6 +74,15 @@
 
     .animation {
       margin-top: 2em;
+      min-height: 250px;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .app {
+    .animation {
+      min-height: 220px;
     }
   }
 }
