@@ -10,6 +10,7 @@ import (
 
 	firebase "firebase.google.com/go"
 	"firebase.google.com/go/db"
+	"google.golang.org/api/option"
 )
 
 // PubSubMessage is the payload of a Pub/Sub event. Please refer to the docs for
@@ -37,7 +38,8 @@ func newFirebaseApp(ctx context.Context) *db.Client {
 	conf := &firebase.Config{
 		DatabaseURL: fmt.Sprintf("https://%s.firebaseio.com/", databaseName),
 	}
-	app, err := firebase.NewApp(ctx, conf)
+	opt := option.WithCredentialsFile(os.Getenv("GOOGLE_APPLICATION_CREDENTIALS"))
+	app, err := firebase.NewApp(ctx, conf, opt)
 	if err != nil {
 		log.Fatalln("Error initializing app:", err)
 	}
@@ -58,13 +60,14 @@ func addDocument(ctx context.Context, dbClient db.Client, message []byte) {
 		log.Fatalln("Error unmarshalling message", err)
 	}
 
-    if metric.Time != "" {
-        // retrieve a byte slice from bytes.Buffer
-        err := dbClient.NewRef(fmt.Sprintf("bicycle_data/%s", metric.Time)).Set(ctx, metric)
-        if err != nil {
-            log.Fatalln("Error set message", err)
-        }
-    } else {
+	if metric.Time != "" {
+		// retrieve a byte slice from bytes.Buffer
+		err := dbClient.NewRef(fmt.Sprintf("bicycle_data/%s", metric.Time)).Set(ctx, metric)
+		if err != nil {
+			log.Fatalln("Error set message", err)
+		}
+	} else {
 		log.Println("Missing data time")
+
 	}
 }
