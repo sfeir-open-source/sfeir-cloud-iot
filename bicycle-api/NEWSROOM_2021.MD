@@ -1,9 +1,34 @@
-Pour le DevFest de Lille, le 19 novembre 2021. Chez SFEIR Lille, nous avions un stand avec comme animation un vélo connecté afin de comptabiliser le nombre de kilomètre parcouru. Pour chaque kilomètres parcourus un don de 5€ était fait au secour populaire. 
+Pour le DevFest de Lille, le 19 novembre 2021. Chez SFEIR Lille, nous avions un stand avec comme animation un vélo connecté afin de comptabiliser le nombre de kilomètre parcouru. Pour chaque kilomètres parcourus un don de 5€ était fait au secour populaire.
 
-Pour l’animation du stand c’est notre directeur engineering de Lille qui a pensé à cette idée de vélo, sauf que nous n’avions pas de vélo d’appartement connecté ni de home traîner connecté (un home traîner est un outil permettant aux cyclistes de faire du vélo dans leur appartement ou maison). 
-Nous avons donc fait avec le minimum de moyen. Un sferiens avait un home traîneur et nous l’a prêté, et puis nous avons commandé le nécessaire pour pouvoir compter le nombre de tours de roue fait sur un certain laps de temps afin de calculer la vitesse et la distance parcourue. Une fois ce montage fait et la programmation de l’esp faites, il nous fallait juste à trouver comment assimiler la donnée et la restituer. 
-Pour ce faire, nous avons été au plus simple vis à vis de nos compétences, nous travaillions tous les jours sur la GCP et nous connaissons bien ses outils. C’est donc naturellement que nous utilisons la GCP pour notre infrastructure. 
+![Stand Devfest Lille 2021 Sfeir](../docs/img/devfest-stand.JPG)
+
+## Liste du materiel
+
+(Todo)
+
+- Un vélo
+- Un support de home trainer
+- Beaucoup de stickers
+
+## Architecture
+
+L’avantage de faire toute l’infrastructure sur la GCP c’est que nous n’avions pas d'infrastucture à gérer.
+
+## Fonctionnement
+
+Pour l’animation du stand c’est notre directeur engineering de Lille qui a pensé à cette idée de vélo, sauf que nous n’avions pas de vélo d’appartement connecté ni de home traîner connecté (un home traîner est un outil permettant aux cyclistes de faire du vélo dans leur appartement ou maison).
+Nous avons donc fait avec le minimum de moyen. Un sferiens avait un home traîneur et nous l’a prêté, et puis nous avons commandé le nécessaire pour pouvoir compter le nombre de tours de roue fait sur un certain laps de temps afin de calculer la vitesse et la distance parcourue. Une fois ce montage fait et la programmation de l’esp faites, il nous fallait juste à trouver comment assimiler la donnée et la restituer.
+Pour ce faire, nous avons été au plus simple vis à vis de nos compétences, nous travaillions tous les jours sur la GCP et nous connaissons bien ses outils. C’est donc naturellement que nous utilisons la GCP pour notre infrastructure.
 Nous avons décider que l‘esp aller envoyer des messages sur pubsub et qu’une cloud function aller souscrire au topic et pour chaque élément reçu le mettre dans une database. La Cloud fonction a juste pour but de récupérer chaque message et de les inserer vers la bdd.
-A la suite de ça, une fois la donnée en base, nous voulions la restituer sur un écran afin de montrer en temps réel la vitesse des personnes sur le vélo et la distance total parcourue, pour ce faire nous avons utilisé 2 AppEngine, qui sont simplement un back avec une api qui permet de restituer la data sur différents endpoint tout en faisant les calculs sur la data et un front récupérant les donnée du back. 
+A la suite de ça, une fois la donnée en base, nous voulions la restituer sur un écran afin de montrer en temps réel la vitesse des personnes sur le vélo et la distance total parcourue, pour ce faire nous avons utilisé 2 AppEngine, qui sont simplement un back avec une api qui permet de restituer la data sur différents endpoint tout en faisant les calculs sur la data et un front récupérant les donnée du back.
 
-L’avantage de faire toute l’infrastructure sur la GCP c’est que nous n’avions pas d'infrastucture à gérer. Le seul souci auquel nous n’avions pas pensé, (en plus de celui ou la data fait le tour de la terre alors que le vélo et l’ordinateur restituant la donne était a 1.5m l’un de l’autre) était la connexion internet défaillante et dans le cas où l’esp perdait internet, nous n’avions plus l’assimilation dd donnée, nous perdions simplement l’information. Ça sera quelque chose à prévoir si nous recommençons l’expérience
+## Amélioration possible
+
+Le seul souci auquel nous n’avions pas pensé, (en plus de celui ou la data fait le tour de la terre alors que le vélo et l’ordinateur restituant la donne était a 1.5m l’un de l’autre) était la connexion internet défaillante et dans le cas où l’esp perdait internet, nous n’avions plus l’assimilation dd donnée, nous perdions simplement l’information. Ça sera quelque chose à prévoir si nous recommençons l’expérience
+
+## Remerciement
+
+## Résultat final
+
+Sfeir Lille a fait un don de 500€ au secour populaire. La distance effecruée lors du devfest est de 117,15 km.
+![Résultat final](../docs/img/devfest-result.jpg)
